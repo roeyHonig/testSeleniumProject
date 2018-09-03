@@ -2,6 +2,7 @@ package student.roey.honig;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Main {
@@ -11,13 +12,23 @@ public class Main {
         System.out.println("Hello World");
         System.setProperty("webdriver.chrome.driver", "C:/roey/chromeDriverForSolenium/chromedriver.exe");
         WebDriver obj = new ChromeDriver();
-        obj.get("https://responsive-cv.firebaseapp.com/");
+        obj.get("https://app.proggio.com/login");
 
-        By nameHeaderId = new By.ById("name");
-        //By educationHeaderId = new By.ById("educationH1Id");
+         By inputTextFieldId = new By.ById("input-email");
+         By inputPasswordTextFieldId = new By.ById("input-password");
+        By signInBtnId = new By.ById("button-login");
 
-        System.out.println("The person this CV beloings to is: " + obj.findElement(nameHeaderId).getText());
-        //System.out.println(obj.findElement(educationHeaderId).getText());
+        WebElement emailInput = obj.findElement(inputTextFieldId);
+        emailInput.clear();
+        emailInput.sendKeys("roeyhonig94@gmail.com");
+
+        WebElement passwordInput = obj.findElement(inputPasswordTextFieldId);
+        passwordInput.clear();
+        passwordInput.sendKeys("14ZDDo01");
+
+        WebElement signInBtn = obj.findElement(signInBtnId);
+        signInBtn.click();
+
 
     }
 }
